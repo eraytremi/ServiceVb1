@@ -1,11 +1,7 @@
 ﻿Public Class Service
     Implements IService
 
-    Public Sub GetAll() Implements IService.GetAll
-        Using context As New Context()
-            context.Products.ToList()
-        End Using
-    End Sub
+
 
     Public Sub InsertProduct(product As Product) Implements IService.InsertProduct
         Using context As New Context()
@@ -13,4 +9,10 @@
             context.SaveChanges()
         End Using
     End Sub
+
+    Public Function GetAll() As List(Of Product) Implements IService.GetAll
+        Using context As New Context()
+            Return context.Products.ToList()
+        End Using
+    End Function
 End Class

@@ -1,5 +1,5 @@
 ﻿Public Interface IService
-    Sub GetAll()
+    Function GetAll() As List(Of Product)
     Sub InsertProduct(product As Product)
 
 End Interface
