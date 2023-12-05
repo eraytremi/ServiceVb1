@@ -9,8 +9,9 @@ Public Class ValuesController
     Public Sub New(service As IService)
         _service = service
     End Sub
-    ' GET api/<controller>
 
+    ' GET api/<controller>
+    <HttpGet>
     Public Function GetValues() As IEnumerable(Of Product)
         Dim list As List(Of Product) = _service.GetAll()
         Return list
@@ -22,8 +23,11 @@ Public Class ValuesController
     End Function
 
     ' POST api/<controller>
-    Public Sub PostValue(<FromBody()> value As Product)
-        _service.InsertProduct(value)
+    Public Sub PostValue()
+        Dim newProduct As New Product
+        newProduct.Name="elma"
+
+        _service.InsertProduct(newProduct)
 
     End Sub
 

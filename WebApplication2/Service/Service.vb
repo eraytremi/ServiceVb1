@@ -10,7 +10,7 @@
         End Using
     End Sub
 
-    Public Function GetAll() As List(Of Product) Implements IService.GetAll
+    Public Function GetAll() As IEnumerable(Of Product) Implements IService.GetAll
         Using context As New Context()
             Return context.Products.ToList()
         End Using
