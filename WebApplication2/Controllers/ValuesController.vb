@@ -11,11 +11,12 @@ Public Class ValuesController
     End Sub
 
     ' GET api/<controller>
-    <HttpGet>
-    Public Function GetValues() As IEnumerable(Of Product)
-        Dim list As List(Of Product) = _service.GetAll()
-        Return list
-    End Function
+
+    '<HttpGet>
+    'Public Function GetValues() As IHttpActionResult
+    '    Dim list As List(Of Product) = _service.GetAll()
+    '    Return Ok(list)
+    'End Function
 
     ' GET api/<controller>/5
     Public Function GetValue(ByVal id As Integer) As String
@@ -23,13 +24,12 @@ Public Class ValuesController
     End Function
 
     ' POST api/<controller>
-    Public Sub PostValue()
-        Dim newProduct As New Product
-        newProduct.Name="elma"
+    <HttpPost>
+    Public Function PostValue(<FromBody> ByVal product As PostProduct) As IHttpActionResult
 
-        _service.InsertProduct(newProduct)
-
-    End Sub
+        _service.InsertProduct(product)
+        Return Ok()
+    End Function
 
     ' PUT api/<controller>/5
     Public Sub PutValue(ByVal id As Integer, <FromBody()> ByVal value As String)
